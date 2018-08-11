@@ -38,7 +38,7 @@ var funcs = {
 
     // get the API result via jQuery.ajax
     $.ajax({
-      url: 'http://api.ipstack.com/check?access_key=' + access_key,
+      url: 'https://api.ipstack.com/check?access_key=' + access_key,
       dataType: 'jsonp',
       success: function(json) {
         // output the "country flag" object inside "location"
@@ -58,7 +58,7 @@ var funcs = {
     var msgArray = _.split(messageString, ' ');
     var command = _.pullAt(msgArray, [0])[0];
     var searchTerm = _.map(msgArray).join(' ');
-    var gifURL = `http://api.giphy.com/v1/gifs/random?tag=${searchTerm}&api_key=AsxtYL8Ch0dzfD1ekjuC36EWxoUEwsw9&limit=1`;
+    var gifURL = `https://api.giphy.com/v1/gifs/random?tag=${searchTerm}&api_key=AsxtYL8Ch0dzfD1ekjuC36EWxoUEwsw9&limit=1`;
 
     //if first word starts with prefix, handle the command.
     //if first word doesn't start with prefix, push the message.
