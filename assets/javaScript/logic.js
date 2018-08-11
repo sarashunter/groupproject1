@@ -61,16 +61,16 @@ mainChatRef.on("child_added", function (snapshot) {
 
 })
 
-//Function called when post message button is cliced.
+//Function called when post message button is clicked.
 $("#postMessage").on("click", function (event) {
 
     event.preventDefault();
 
     //Calls function that creates the message
-    addMessage($("#messageText").val());
+    addMessage($("#input-message").val());
 
     //Clears input field for next message.
-    $("#messageText").val("");
+    $("#input-message").val("");
 
 })
 
@@ -96,6 +96,8 @@ $("#userChoice").on("click", function (event) {
     database.ref("usersOnline/" + currentUserKey + "/name").set(currentUserName);
 
     //Remove username input box after username is chosen
+
+    // TODO: change display state of #userCreate to hidden and messages to inline-block 
     $("#enterUser").empty();
 
     //Probably want to add our chat box at this point rather than from the start.
