@@ -38,7 +38,7 @@ var funcs = {
 
     // get the API result via jQuery.ajax
     $.ajax({
-      url: 'http://api.ipstack.com/check?access_key=' + access_key,
+      url: 'https://api.ipstack.com/check?access_key=' + access_key,
       dataType: 'jsonp',
       success: function(json) {
         // output the "country flag" object inside "location"
@@ -58,21 +58,20 @@ var funcs = {
     var msgArray = _.split(messageString, ' ');
     var command = _.pullAt(msgArray, [0])[0];
     var searchTerm = _.map(msgArray).join(' ');
-    var gifURL = `http://api.giphy.com/v1/gifs/random?tag=${searchTerm}&api_key=AsxtYL8Ch0dzfD1ekjuC36EWxoUEwsw9&limit=1`;
+    var gifURL = `https://api.giphy.com/v1/gifs/random?tag=${searchTerm}&api_key=AsxtYL8Ch0dzfD1ekjuC36EWxoUEwsw9&limit=1`;
 
     //if first word starts with prefix, handle the command.
     //if first word doesn't start with prefix, push the message.
-    //AJAX call would go here?
     if (_.startsWith(command, prefix)) {
       if (command === '!help') {
         console.log(
-          '!gif [searchTerm] for pulling a random gif with that tag.'
+          '!gif [searchTerm] for pulling a random gif with that tag.\nExample: !gif corgi'
         );
       } else if (command === '!gif') {
         $.ajax({
           url: gifURL
         }).then(function(res) {
-          var gif = res.data.fixed_width_small_url;
+          var gif = res.data.images.fixed_width.url;
           funcs.addMessage(`<img src=${gif}>`);
         });
       } else {
