@@ -5,20 +5,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rock Paper Scissors</title>
+    <title>Flock</title>
+
+    <!-- BootStrap css link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <style>
+        /* width */
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+
+
 </head>
 
 <body>
-<div id="enterUser">
-<input type="text" id="chooseUser">
-<button id="userChoice">Submit</button>
-</div>
-<div id="chatlog"></div>
-<input type="text" id="messageText" value="">
-<button id="postMessage">Post</button>
-<script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
-<script src="https://code.jquery.com/jquery.js"></script>
-    <script src="assets/logic.js"></script>
+
+
+
+
+    <div class="header">
+        <div id="headerHero" class="jumbotron">
+            <div class="container">
+                <h1 class="text-center">FLOCK</h1>
+                <h6 class="text-center">Internal Messaging Application</h6>
+            </div>
+        </div>
+    </div>
+
+    <div class="messageBoard container">
+
+        <!-- This div will be displayed first when you join. Once the user/userName is added to the database this div will be hidden.  -->
+        <div id="userCreate">
+
+            <div id="enterUser">
+
+                <div class="card">
+                    <div class="card-header">
+                        Please create a user name
+                    </div>
+                    <div class="card-body">
+                        <input type="text" id="chooseUser">
+                        <button id="userChoice" class="btn btn-info">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- THis Div starts in a hidden display state. After user/userName is made, display state changes to inline-block -->
+        <div id="messages">
+            <div class="card">
+
+                <div class="card-header">
+                    <!-- TODO: Make chatroom name change, using place holder until we add multi rooms -->
+                    <h6 id="chatRoomName">MainChat</h6>
+                </div>
+
+                <div class="card-body" style="overflow-y: scroll; height:400px;">
+                    <!-- TODO: create scroll box for messages -->
+                    <!-- chatRoom messages append here -->
+                    <div data-spy="scroll" data-target="#list-example" data-offset="0" id="chatlog" class="scrollspy-example">
+
+                    </div>
+                    <div id="chatlog"></div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- TODO: input extra buttons into chatBar (manual gif search, settings btn, users list, ect) -->
+        <div id="chatBar">
+            <div class="card">
+                <form class="form-inline">
+
+                    <label class="sr-only" for="input-message">Name</label>
+                    <input type="text" class="form-control col-sm-11" id="input-message" placeholder="Your Dank Message">
+
+                    <button id="postMessage" class="btn btn-secondary col-sm-1">Post</button>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- firebase J.S. link -->
+    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+
+    <!-- jQuery link -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <!-- BootStrap jQuery link -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <!-- App J.S. link -->
+    <script src="assets/javaScript/logic.js"></script>
+
 </body>
 
 </html>
