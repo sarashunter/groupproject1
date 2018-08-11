@@ -62,17 +62,16 @@ var funcs = {
 
     //if first word starts with prefix, handle the command.
     //if first word doesn't start with prefix, push the message.
-    //AJAX call would go here?
     if (_.startsWith(command, prefix)) {
       if (command === '!help') {
         console.log(
-          '!gif [searchTerm] for pulling a random gif with that tag.'
+          '!gif [searchTerm] for pulling a random gif with that tag.\nExample: !gif corgi'
         );
       } else if (command === '!gif') {
         $.ajax({
           url: gifURL
         }).then(function(res) {
-          var gif = res.data.fixed_width_small_url;
+          var gif = res.data.images.fixed_width.url;
           funcs.addMessage(`<img src=${gif}>`);
         });
       } else {
