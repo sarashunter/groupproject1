@@ -1,13 +1,13 @@
-  // Initialize Firebase
-  var config = {
+// Initialize Firebase
+var config = {
     apiKey: "AIzaSyCruCRfWLwoPUYABBuq_YVrCh1BGLPR1OE",
     authDomain: "project1-4ed1c.firebaseapp.com",
     databaseURL: "https://project1-4ed1c.firebaseio.com",
     projectId: "project1-4ed1c",
     storageBucket: "project1-4ed1c.appspot.com",
     messagingSenderId: "24055026065"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
 var database = firebase.database();
 
@@ -24,10 +24,13 @@ var usersOnlineRef = database.ref("/usersOnline/");
 var connectedRef = database.ref(".info/connected");
 
 //This will store the key to the user so other information about the user can be accessed later.
-var currentUserKey;  
+var currentUserKey;
 
 //This is the current username.  This is for ease of use and gets valued when a username is chosen.
 var currentUserName;
+
+//Will display country flag.
+var currentUserFlag;
 
 // This checks when the number of connections changes.
 connectedRef.on("value", function (snapshot) {
@@ -85,12 +88,28 @@ function addMessage(messageString) {
 
 }
 
+function getUserFlag() {
+    var access_key = '59bbc530a4a2a267287e5dc9526d899e';
+
+    // get the API result via jQuery.ajax
+    $.ajax({
+        url: 'http://api.ipstack.com/check?access_key=' + access_key,
+        dataType: 'jsonp',
+        success: function (json) {
+
+            // output the "country flag" object inside "location"
+           currentUserFlag = json.location.country_flag;
+
+        }
+    });
+}
+
 //function to choose your username
 $("#userChoice").on("click", function (event) {
     event.preventDefault();
 
     //Store the value of the username chosen by user.  Probably want to validate this against other users.
-    currentUserName = $("#chooseUser").val(); 
+    currentUserName = $("#chooseUser").val();
 
     //Set the name of the current user in user object to user's input.
     database.ref("usersOnline/" + currentUserKey + "/name").set(currentUserName);
@@ -100,4 +119,5 @@ $("#userChoice").on("click", function (event) {
 
     //Probably want to add our chat box at this point rather than from the start.
 
+    getUserFlag();
 })
