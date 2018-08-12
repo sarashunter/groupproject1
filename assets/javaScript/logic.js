@@ -34,23 +34,21 @@ var currentUserFlag;
 
 var funcs = {
   getUserFlag: function() {
-    var access_key = '59bbc530a4a2a267287e5dc9526d899e';
-
     // get the API result via jQuery.ajax
     $.ajax({
-      url: 'https://api.ipstack.com/check?access_key=' + access_key,
-      dataType: 'jsonp',
-      success: function(json) {
-        // output the "country flag" object inside "location"
-        currentUserFlag = json.location.country_flag;
-      }
+      url:
+        'https://api.ipdata.co?api-key=707bc514910151f8dac000c65049abe79a8398dadfb2943e6582e494'
+    }).then(function(res) {
+      var flag = `<img src=${res.flag}>`;
+      currentUserFlag = flag;
     });
   },
   addMessage: function(messageString) {
     mainChatRef.push({
       sender: currentUserName,
       message: messageString,
-      time: 'now'
+      time: 'now',
+      flag: currentUserFlag
     });
   },
   msgHandler: function(messageString) {
@@ -64,9 +62,7 @@ var funcs = {
     //if first word doesn't start with prefix, push the message.
     if (_.startsWith(command, prefix)) {
       if (command === '!help') {
-        console.log(
-          '!gif [searchTerm] for pulling a random gif with that tag.\nExample: !gif corgi'
-        );
+        funcs.addMessage('Use "!gif [search term]" to post a random gif with the specified tag.  Example: !gif happy');
       } else if (command === '!gif') {
         $.ajax({
           url: gifURL
@@ -75,7 +71,7 @@ var funcs = {
           funcs.addMessage(`<img src=${gif}>`);
         });
       } else {
-        console.log('Command not found!\nType !help for commands.');
+        funcs.addMessage('Command not found! Use !help for command help.');
       }
     } else {
       funcs.addMessage(messageString);
@@ -109,7 +105,7 @@ connectedRef.on('value', function(snapshot) {
 mainChatRef.on('child_added', function(snapshot) {
   //create a div to show the message
   var $messageDiv = $('<div>').html(
-    snapshot.val().sender + ': ' + snapshot.val().message
+    `${snapshot.val().flag} ${snapshot.val().sender}: ${snapshot.val().message}`
   );
 
   //Append the single message to the chat log
