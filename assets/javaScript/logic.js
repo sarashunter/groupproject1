@@ -62,9 +62,7 @@ var funcs = {
     //if first word doesn't start with prefix, push the message.
     if (_.startsWith(command, prefix)) {
       if (command === '!help') {
-        console.log(
-          '!gif [searchTerm] for pulling a random gif with that tag.\nExample: !gif corgi'
-        );
+        funcs.addMessage('Use "!gif [search term]" to post a random gif with the specified tag.  Example: !gif happy');
       } else if (command === '!gif') {
         $.ajax({
           url: gifURL
@@ -73,7 +71,7 @@ var funcs = {
           funcs.addMessage(`<img src=${gif}>`);
         });
       } else {
-        console.log('Command not found!\nType !help for commands.');
+        funcs.addMessage('Command not found! Use !help for command help.');
       }
     } else {
       funcs.addMessage(messageString);
