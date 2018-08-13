@@ -82,8 +82,22 @@ var funcs = {
   },
   themeSwitch: function(chosenTheme) {
     var theme = $('#theme');
-    var chosenTheme = chosenTheme.toLowerCase();
-    theme.attr('href', `assets/css/${chosenTheme}.css`);
+    var newTheme = chosenTheme.toLowerCase();
+
+    localStorage.clear();
+    localStorage.setItem('theme', newTheme);
+
+    var storedTheme = localStorage.getItem('theme');
+    theme.attr('href', `assets/css/${storedTheme}.css`)
+  },
+  themeGet: function() {
+    var theme = $('#theme');
+    var storedTheme = localStorage.getItem('theme');
+
+    if (storedTheme) {
+      console.log(storedTheme);
+      // theme.attr('href', `assets/css/${storedTheme}.css`);
+    }
   }
 };
 
@@ -171,3 +185,5 @@ $('#userChoice').on('click', function(event) {
   //   changeStyle();
   // })
 });
+
+funcs.themeGet();
