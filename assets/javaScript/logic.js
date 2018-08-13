@@ -147,4 +147,22 @@ $('#userChoice').on('click', function(event) {
 
     funcs.getUserFlag();
   }
+
+
+  
+  // Adds online user to the sidebar
+  var newRow = $("<tr>").append(
+    $("<td>").text(currentUserName),
+  );
+
+  // Append the new row to the table
+  $("#activeUsers > tbody").append(newRow);
+
+  //Change background style
+  // function changeStyle() {
+  //   $("#themeStylesheet").attr("href", "style1.css");
+  // }
+  // $("#styleChangerBtn").on("click", function (event) {
+  //   changeStyle();
+  // })
 });
