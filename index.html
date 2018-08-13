@@ -5,55 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Flock</title>
+    <title>Flak Messsenger</title>
 
     <!-- BootStrap css link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
 
-    <style>
-        /* width */
-
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        /* Track */
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        /* Handle */
-
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-        }
-
-        /* Handle on hover */
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-    </style>
-
+        <!-- <link id="themeStylesheet" rel="stylesheet" href="assets/css/style1.css"> -->
+        <link rel="stylesheet" href="assets/css/stylemaster.css">
+    
 
 </head>
 
 <body>
-
-
-
+        
+       
 
     <div class="header">
         <div id="headerHero" class="jumbotron">
             <div class="container">
-                <h1 class="text-center">FLOCK</h1>
-                <h6 class="text-center">Internal Messaging Application</h6>
+                    <!-- Button that allows user to change background -->
+                    <!-- <button id="styleChangerBtn">Change Style</button>  -->
+         
+                
             </div>
         </div>
     </div>
 
+    
     <div class="messageBoard container">
 
         <!-- This div will be displayed first when you join. Once the user/userName is added to the database this div will be hidden.  -->
@@ -87,6 +66,20 @@
                     <!-- chatRoom messages append here -->
                     <div data-spy="scroll" data-target="#list-example" data-offset="0" id="chatlog" class="scrollspy-example">
 
+                        <!-- Message boxes -->
+                            <div class="container" id="lighterContainer">
+                                    <img id="flag" src="./assets/images/flak-logo-bird only.jpg" alt="Flag">
+                                    <p id="message" placeholder=""></p>
+                                    <span class="time-right">HH:mm</span>
+                            </div>
+
+                            <div class="container darker">
+                                    <img id="flagReply" src="./assets/images/flak-logo-bird only.jpg" alt="Flag" class="right">
+                                    <p id="messageReply" placeholder=""></p>
+                                    <span class="time-left">HH:mm</span>
+                            </div>
+                                  
+
                     </div>
                     <div id="chatlog"></div>
                 </div>
@@ -110,6 +103,21 @@
         </div>
 
     </div>
+
+    <!-- Sidebar for Active Online Users -->
+    <div class="card" id="sidebar" style="width: 18rem;">
+            <img class="card-img-top" src="./assets/images/flak-logo-bird only.jpg" alt="Logo image">
+            <div class="card-body">
+                    <table class="table table-dark" id="activeUsers">
+                            <thead>
+                              <tr>
+                                <th scope="col">Online Users</th>
+                            </tr>
+                              </thead>                             
+                            </tbody>
+                          </table>
+                </div>
+          </div>
 
     <!-- lodash  -->
     <!-- TODO: Pull only used methods from lodash CDN -->

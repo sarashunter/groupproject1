@@ -1,0 +1,139 @@
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body { 
+    background-color: rgb(208, 228, 227);  
+}
+
+.jumbotron {
+    background: url(../images/flak-logo-transparent.png) no-repeat;
+    background-color: white;
+    background-size: auto 100%;
+    background-position: center;
+    height: 300px;
+    margin-top: auto;    
+}
+
+/* #styleChangerBtn {
+    margin-left: -24em;
+    margin-top: auto;
+} */
+
+.messageBoard {
+    float: right;
+    margin-right: 140px;
+    margin-top: -2em;
+
+}
+
+/* Chat boxes */
+#lighterContainer{
+    border: 1px solid rgb(127, 188, 192);
+    background-color: #e9eff0;
+    border-radius: 5px;
+    margin: 10px 0;
+    width: 60%;
+}
+
+/* Darker container */
+.darker {
+    border: 1px solid rgb(127, 188, 192);
+    background-color: rgb(156, 174, 184);
+    border-radius: 5px;
+    float: right;
+    width: 60%;
+}
+
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Images for flag avatars */
+#flag {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+#flagReply {
+    float: right;
+    max-width: 60px;
+    width: 100%;
+    margin-left: 20px;
+    margin-right:0;
+    border-radius: 50%;
+}
+
+/* Sidebar */
+#sidebar {
+    margin-left: 110px;
+    margin-top: -2em;
+}
+
+.card-img-top {
+    width: 200px;
+}
+
+/* @media (max-width: 980px) {
+    .Jumbotron {
+      width: 100%;
+    }
+    .messageBoard {
+      width: 100%;
+      margin: 0 auto;
+    }
+    #sidebar {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .Jumbotron {
+      width: 100%;
+    }
+    .messageBoard {
+      width: 100%;
+      margin: 0 auto;
+    }
+    #sidebar {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .Jumbotron {
+      width: 100%;
+    }
+    .messageBoard {
+      width: 100%;
+      margin: 0 auto;
+    }
+    #sidebar {
+      width: 100%;
+    }
+  } */
