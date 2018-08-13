@@ -40,12 +40,42 @@ body {
     margin-top: auto;
 } */
 
+#userName {
+    background-color: rgb(54, 132, 138);
+    font-family: fantasy;
+    font-size: 30px;
+    color: white;
+}
+
+#chooseUser {
+    border: 1px solid rgb(127, 188, 192);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.btn {
+    padding: 0 8px 0 8px;
+    background-color: rgb(127, 188, 192);
+    border: none;
+}
+
+#chatHeader {
+    background-color: rgb(54, 132, 138);
+}
+
+h6 {
+    font-family: fantasy;
+    font-size: 30px;
+    color: white;
+    margin-top: 10px;
+}
+
 .messageBoard {
     float: right;
     margin-right: 140px;
     margin-top: -2em;
-
 }
+
 
 /* Chat boxes */
 #lighterContainer{
@@ -53,7 +83,7 @@ body {
     background-color: #e9eff0;
     border-radius: 5px;
     margin: 10px 0;
-    width: 60%;
+    width: 100%;
 }
 
 /* Darker container */
@@ -62,7 +92,7 @@ body {
     background-color: rgb(156, 174, 184);
     border-radius: 5px;
     float: right;
-    width: 60%;
+    width: 100%;
 }
 
 .container::after {
@@ -76,17 +106,31 @@ body {
     float: left;
     max-width: 60px;
     width: 100%;
-    margin-right: 20px;
+    margin-left: 10px;
     border-radius: 50%;
 }
 
 #flagReply {
-    float: right;
+    float: left;
     max-width: 60px;
     width: 100%;
-    margin-left: 20px;
-    margin-right:0;
+    margin-left: 10px;
     border-radius: 50%;
+}
+
+.form-inline {
+    width: 85%;
+    padding: 10px;
+    background-color: rgb(54, 132, 138);
+}
+
+#input-message {
+    border: 1px solid rgb(127, 188, 192);
+    border-radius: 5px;
+}
+
+#postMessage {
+    background-color: rgb(127, 188, 192);
 }
 
 /* Sidebar */
