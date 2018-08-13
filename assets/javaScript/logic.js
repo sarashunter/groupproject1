@@ -79,6 +79,11 @@ var funcs = {
 
     //empty out the input box after the stuff is finished
     $('#input-message').val('');
+  },
+  themeSwitch: function(chosenTheme) {
+    var theme = $('#theme');
+    var chosenTheme = chosenTheme.toLowerCase();
+    theme.attr('href', `assets/css/${chosenTheme}.css`);
   }
 };
 
