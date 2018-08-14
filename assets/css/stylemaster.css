@@ -68,6 +68,11 @@ body {
     background-color: rgb(54, 132, 138);
 }
 
+h3 {
+    background-color: #000000;
+    color:#ffffff;
+}
+
 h6 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;

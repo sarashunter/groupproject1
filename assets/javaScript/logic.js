@@ -37,17 +37,17 @@ var chatLoad = false;
 var scrollState = false;
 
 var funcs = {
-  getUserFlag: function() {
+  getUserFlag: function () {
     // get the API result via jQuery.ajax
     $.ajax({
       url:
         'https://api.ipdata.co?api-key=707bc514910151f8dac000c65049abe79a8398dadfb2943e6582e494'
-    }).then(function(res) {
+    }).then(function (res) {
       var flag = `<img src=${res.flag}>`;
       currentUserFlag = flag;
     });
   },
-  addMessage: function(messageString) {
+  addMessage: function (messageString) {
     mainChatRef.push({
       sender: currentUserName,
       message: messageString,
@@ -55,7 +55,7 @@ var funcs = {
       flag: currentUserFlag
     });
   },
-  msgHandler: function(messageString) {
+  msgHandler: function (messageString) {
     var prefix = '!';
     var msgArray = _.split(messageString, ' ');
     var command = _.pullAt(msgArray, [0])[0];
@@ -70,7 +70,7 @@ var funcs = {
       } else if (command === '!gif') {
         $.ajax({
           url: gifURL
-        }).then(function(res) {
+        }).then(function (res) {
           var gif = res.data.images.fixed_width.url;
           funcs.addMessage(`<img src=${gif}>`);
         });
@@ -84,7 +84,7 @@ var funcs = {
     //empty out the input box after the stuff is finished
     $('#input-message').val('');
   },
-  themeSwitch: function(chosenTheme) {
+  themeSwitch: function (chosenTheme) {
     var theme = $('#theme');
 
     localStorage.clear();
@@ -93,28 +93,39 @@ var funcs = {
     var storedTheme = localStorage.getItem('theme');
     theme.attr('href', `assets/css/${storedTheme}.css`);
   },
-  themeGet: function() {
+  themeGet: function () {
     var theme = $('#theme');
     var storedTheme = localStorage.getItem('theme');
 
     if (storedTheme) {
       theme.attr('href', `assets/css/${storedTheme}.css`);
     }
+  },
+  displayUser: function (name, key) {
+    var userDiv = $("<div>");
+    userDiv.attr("data-key", key);
+    userDiv.text(name);
+    $("#activeUsers").append(userDiv);
   }
 };
 
 // This checks when the number of connections changes.
-connectedRef.on('value', function(snapshot) {
+connectedRef.on('value', function (snapshot) {
   // When they are connected
   if (snapshot.val()) {
     // User gets added to online users
     var connected = usersOnlineRef.push({
       name: 'unknown', //starts as unknown
-      location: 'usa' //placeholder for later features
+      location: 'usa', //placeholder for later features
+      key: 'futureKey', //placeholder for key (This is important for removing offline users from users online)     
     });
 
     // Store the "key" to the current user
     currentUserKey = connected.key;
+
+    database
+      .ref('usersOnline/' + currentUserKey + '/key')
+      .set(currentUserKey);
 
     // Remove user and their data from the onlineUsers when disconnected
 
@@ -125,7 +136,7 @@ connectedRef.on('value', function(snapshot) {
 
 
 //function that checks for new messages and runs when the page is loaded
-mainChatRef.limitToLast(50).on('child_added', function(snapshot) {
+mainChatRef.limitToLast(50).on('child_added', function (snapshot) {
   //create a div to show the message
   var $messageDiv = $('<div>').html(
     `${snapshot.val().flag} ${snapshot.val().sender}: ${snapshot.val().message}`
@@ -133,7 +144,7 @@ mainChatRef.limitToLast(50).on('child_added', function(snapshot) {
 
   //Append the single message to the chat log
   $('#chatlog').append($messageDiv);
-  
+
   //controls timeout for scrolling depending on if the page has loaded and if the scroll bar is at the bottom.
   if (!scrollState) {
     if (!chatLoad) {
@@ -151,12 +162,12 @@ mainChatRef.limitToLast(50).on('child_added', function(snapshot) {
       }, 50);
     }
   }
-  
+
 });
 
 
 //listens for user manually scrolling up
-$('#chatlog').scroll(function() {
+$('#chatlog').scroll(function () {
   var scrollTop = $('#chatlog').scrollTop();
   var scrollHeight = $('#chatlog')[0].scrollHeight;
   var clientHeight = $('#chatlog')[0].clientHeight;
@@ -171,7 +182,7 @@ $('#chatlog').scroll(function() {
 
 
 //Function called when post message button is clicked.
-$('#postMessage').on('click', function(event) {
+$('#postMessage').on('click', function (event) {
   event.preventDefault();
 
   if ($('#input-message').val()) {
@@ -184,7 +195,7 @@ $('#postMessage').on('click', function(event) {
 });
 
 //function to choose your username
-$('#userChoice').on('click', function(event) {
+$('#userChoice').on('click', function (event) {
   event.preventDefault();
 
   //Store the value of the username chosen by user.  Probably want to validate this against other users.
@@ -206,27 +217,27 @@ $('#userChoice').on('click', function(event) {
     funcs.getUserFlag();
   }
 
-
-  // Adds online user to the sidebar
-  var newRow = $("<tr>").append(
-    $("<td>").text(currentUserName),
-  );
-
-  // Append the new row to the table
-  $("#activeUsers > tbody").append(newRow);
-
-  // // Change background style
-  // function changeStyle() {
-  //   $("#themeStylesheet").attr("href", "style1.css");
-  // }
-  // $("#styleChangerBtn").on("click", function (event) {
-  //   changeStyle();
-  // })
 });
 
+//Detects when a new user comes online.
+usersOnlineRef.on('child_added', function (snapshot) {
+  funcs.displayUser(snapshot.val().name, snapshot.key);
+})
+
+//Detects when a user changes (name).  Removes old div and puts it in a new one.
+usersOnlineRef.on('child_changed', function (snapshot) {
+  $('[data-key="' + snapshot.val().key + '"]').remove();
+  funcs.displayUser(snapshot.val().name, snapshot.key);
+})
+
+//Detects when a uesr goes offline.  Removes div.
+usersOnlineRef.on('child_removed', function (snapshot) {
+  console.log("key available is " + snapshot.val().key);
+  $('[data-key="' + snapshot.val().key + '"]').remove();
+})
 
 //Theme chooser click function
-$('.themeBtn').click(function() {
+$('.themeBtn').click(function () {
   event.preventDefault();
 
   var chosenTheme = $(this).attr('data-theme');
