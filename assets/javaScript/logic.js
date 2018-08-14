@@ -88,7 +88,7 @@ var funcs = {
     localStorage.setItem('theme', newTheme);
 
     var storedTheme = localStorage.getItem('theme');
-    theme.attr('href', `assets/css/${storedTheme}.css`)
+    theme.attr('href', `assets/css/${storedTheme}.css`);
   },
   themeGet: function() {
     var theme = $('#theme');
@@ -96,7 +96,7 @@ var funcs = {
 
     if (storedTheme) {
       console.log(storedTheme);
-      // theme.attr('href', `assets/css/${storedTheme}.css`);
+      theme.attr('href', `assets/css/${storedTheme}.css`);
     }
   }
 };
@@ -185,5 +185,3 @@ $('#userChoice').on('click', function(event) {
   //   changeStyle();
   // })
 });
-
-funcs.themeGet();
