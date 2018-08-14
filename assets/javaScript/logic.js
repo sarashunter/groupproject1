@@ -79,6 +79,25 @@ var funcs = {
 
     //empty out the input box after the stuff is finished
     $('#input-message').val('');
+  },
+  themeSwitch: function(chosenTheme) {
+    var theme = $('#theme');
+    var newTheme = chosenTheme.toLowerCase();
+
+    localStorage.clear();
+    localStorage.setItem('theme', newTheme);
+
+    var storedTheme = localStorage.getItem('theme');
+    theme.attr('href', `assets/css/${storedTheme}.css`);
+  },
+  themeGet: function() {
+    var theme = $('#theme');
+    var storedTheme = localStorage.getItem('theme');
+
+    if (storedTheme) {
+      console.log(storedTheme);
+      theme.attr('href', `assets/css/${storedTheme}.css`);
+    }
   }
 };
 
