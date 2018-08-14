@@ -82,10 +82,9 @@ var funcs = {
   },
   themeSwitch: function(chosenTheme) {
     var theme = $('#theme');
-    var newTheme = chosenTheme.toLowerCase();
 
     localStorage.clear();
-    localStorage.setItem('theme', newTheme);
+    localStorage.setItem('theme', chosenTheme);
 
     var storedTheme = localStorage.getItem('theme');
     theme.attr('href', `assets/css/${storedTheme}.css`);
@@ -133,7 +132,7 @@ mainChatRef.on('child_added', function(snapshot) {
     $('#chatlog')
       .stop()
       .animate({ scrollTop: $('#chatlog')[0].scrollHeight }, 500);
-  }, 75);
+  }, 100);
 });
 
 //Function called when post message button is clicked.
@@ -173,7 +172,6 @@ $('#userChoice').on('click', function(event) {
   }
 
 
-  
   // Adds online user to the sidebar
   var newRow = $("<tr>").append(
     $("<td>").text(currentUserName),
@@ -190,3 +188,17 @@ $('#userChoice').on('click', function(event) {
   //   changeStyle();
   // })
 });
+
+
+//Theme chooser click function
+$('.themeBtn').click(function() {
+  event.preventDefault();
+
+  var chosenTheme = $(this).attr('data-theme');
+
+  funcs.themeSwitch(chosenTheme);
+});
+
+
+//Set color scheme to last chosen theme
+funcs.themeGet();
