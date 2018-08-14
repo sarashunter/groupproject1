@@ -134,7 +134,7 @@ mainChatRef.limitToLast(50).on('child_added', function(snapshot) {
   //Append the single message to the chat log
   $('#chatlog').append($messageDiv);
   
-
+  //controls timeout for scrolling depending on if the page has loaded and if the scroll bar is at the bottom.
   if (!scrollState) {
     if (!chatLoad) {
       setTimeout(() => {
@@ -155,11 +155,13 @@ mainChatRef.limitToLast(50).on('child_added', function(snapshot) {
 });
 
 
+//listens for user manually scrolling up
 $('#chatlog').scroll(function() {
   var scrollTop = $('#chatlog').scrollTop();
   var scrollHeight = $('#chatlog')[0].scrollHeight;
   var clientHeight = $('#chatlog')[0].clientHeight;
 
+  //when user scrolls, enter scroll state. When user scrolls back down, exit scroll state and continue auto-scrolling.
   if (!scrollState) {
     scrollState = true;
   } else if (scrollHeight - scrollTop === clientHeight) {
