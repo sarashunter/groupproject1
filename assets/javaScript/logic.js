@@ -32,6 +32,10 @@ var currentUserName;
 //Will display country flag.
 var currentUserFlag;
 
+//State flags for waiting for chat to load, auto-scrolling when scrolled to bottom, and stopping auto-scroll when manually scrolled up.
+var chatLoad = false;
+var scrollState = false;
+
 var funcs = {
   getUserFlag: function() {
     // get the API result via jQuery.ajax
@@ -94,7 +98,6 @@ var funcs = {
     var storedTheme = localStorage.getItem('theme');
 
     if (storedTheme) {
-      console.log(storedTheme);
       theme.attr('href', `assets/css/${storedTheme}.css`);
     }
   }
@@ -119,8 +122,10 @@ connectedRef.on('value', function(snapshot) {
   }
 });
 
+
+
 //function that checks for new messages and runs when the page is loaded
-mainChatRef.on('child_added', function(snapshot) {
+mainChatRef.limitToLast(50).on('child_added', function(snapshot) {
   //create a div to show the message
   var $messageDiv = $('<div>').html(
     `${snapshot.val().flag} ${snapshot.val().sender}: ${snapshot.val().message}`
@@ -128,12 +133,40 @@ mainChatRef.on('child_added', function(snapshot) {
 
   //Append the single message to the chat log
   $('#chatlog').append($messageDiv);
-  setTimeout(function() {
-    $('#chatlog')
-      .stop()
-      .animate({ scrollTop: $('#chatlog')[0].scrollHeight }, 500);
-  }, 100);
+  
+
+  if (!scrollState) {
+    if (!chatLoad) {
+      setTimeout(() => {
+        $('#chatlog')
+          .stop()
+          .animate({ scrollTop: $('#chatlog')[0].scrollHeight }, 200);
+      }, 200);
+      chatLoad = true;
+    } else {
+      setTimeout(() => {
+        $('#chatlog')
+          .stop()
+          .animate({ scrollTop: $('#chatlog')[0].scrollHeight }, 200);
+      }, 50);
+    }
+  }
+  
 });
+
+
+$('#chatlog').scroll(function() {
+  var scrollTop = $('#chatlog').scrollTop();
+  var scrollHeight = $('#chatlog')[0].scrollHeight;
+  var clientHeight = $('#chatlog')[0].clientHeight;
+
+  if (!scrollState) {
+    scrollState = true;
+  } else if (scrollHeight - scrollTop === clientHeight) {
+    scrollState = false;
+  }
+});
+
 
 //Function called when post message button is clicked.
 $('#postMessage').on('click', function(event) {
