@@ -44,11 +44,22 @@
                 <div class="card">
                     <div class="card-header" id="userName">
                         Please create a user name
+
+                        <div class="btn-group dropup">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" id="dropupBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Background
+                            </button>
+                            <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Original</a>
+                                    <a class="dropdown-item" href="#">Dark</a>
+                            </div>
+                          </div>
                     </div>
                     <div class="card-body">
                         <input type="text" id="chooseUser">
                         <button id="userChoice" class="btn btn-info">Submit</button>
                     </div>
+                   
                 </div>
             </div>
         </div>
@@ -94,9 +105,11 @@
                 <form class="form-inline">
 
                     <label class="sr-only" for="input-message">Name</label>
-                    <input type="text" class="form-control col-sm-11" id="input-message" placeholder="Your Dank Message">
-
+                    <input type="text" class="form-control col-sm-11" id="input-message" placeholder="Type Your Message Here...">
+                    
                     <button id="postMessage" class="btn btn-secondary col-sm-1">Post</button>
+
+         
 
                 </form>
             </div>
