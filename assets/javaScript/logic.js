@@ -158,7 +158,7 @@ $('#userChoice').on('click', function(event) {
   // Append the new row to the table
   $("#activeUsers > tbody").append(newRow);
 
-  //Change background style
+  // // Change background style
   // function changeStyle() {
   //   $("#themeStylesheet").attr("href", "style1.css");
   // }
