@@ -45,14 +45,17 @@ var funcs = {
     }).then(function (res) {
       var flag = `<img src=${res.flag}>`;
       currentUserFlag = flag;
+
+      database
+      .ref('usersOnline/' + currentUserKey + '/flag')
+      .set(res.flag);
     });
   },
   addMessage: function (messageString) {
     mainChatRef.push({
       sender: currentUserName,
       message: messageString,
-      time: 'now',
-      flag: currentUserFlag
+      time: 'now'
     });
   },
   msgHandler: function (messageString) {
@@ -101,10 +104,13 @@ var funcs = {
       theme.attr('href', `assets/css/${storedTheme}.css`);
     }
   },
-  displayUser: function (name, key) {
+  displayUser: function (name, key, flag) {
     var userDiv = $("<div>");
     userDiv.attr("data-key", key);
-    userDiv.text(name);
+
+    console.log("displayUser flag " + flag);
+
+    userDiv.html("<img src="+flag+">" + " " + name);
     $("#activeUsers").append(userDiv);
   }
 };
@@ -116,9 +122,10 @@ connectedRef.on('value', function (snapshot) {
     // User gets added to online users
     var connected = usersOnlineRef.push({
       name: 'unknown', //starts as unknown
-      location: 'usa', //placeholder for later features
+      flag: 'assets/images/unknownflag.jpg', //placeholder for later features
       key: 'futureKey', //placeholder for key (This is important for removing offline users from users online)     
     });
+    
 
     // Store the "key" to the current user
     currentUserKey = connected.key;
@@ -139,7 +146,7 @@ connectedRef.on('value', function (snapshot) {
 mainChatRef.limitToLast(50).on('child_added', function (snapshot) {
   //create a div to show the message
   var $messageDiv = $('<div>').html(
-    `${snapshot.val().flag} ${snapshot.val().sender}: ${snapshot.val().message}`
+    `${snapshot.val().sender}: ${snapshot.val().message}`
   );
 
   //Append the single message to the chat log
@@ -213,26 +220,25 @@ $('#userChoice').on('click', function (event) {
     $('#enterUser').empty();
 
     //Probably want to add our chat box at this point rather than from the start.
-
-    funcs.getUserFlag();
   }
+
+  funcs.getUserFlag();
 
 });
 
 //Detects when a new user comes online.
 usersOnlineRef.on('child_added', function (snapshot) {
-  funcs.displayUser(snapshot.val().name, snapshot.key);
+  funcs.displayUser(snapshot.val().name, snapshot.key, snapshot.val().flag);
 })
 
 //Detects when a user changes (name).  Removes old div and puts it in a new one.
 usersOnlineRef.on('child_changed', function (snapshot) {
   $('[data-key="' + snapshot.val().key + '"]').remove();
-  funcs.displayUser(snapshot.val().name, snapshot.key);
+  funcs.displayUser(snapshot.val().name, snapshot.key, snapshot.val().flag);
 })
 
 //Detects when a uesr goes offline.  Removes div.
 usersOnlineRef.on('child_removed', function (snapshot) {
-  console.log("key available is " + snapshot.val().key);
   $('[data-key="' + snapshot.val().key + '"]').remove();
 })
 
