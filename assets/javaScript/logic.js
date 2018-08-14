@@ -129,6 +129,11 @@ mainChatRef.on('child_added', function(snapshot) {
 
   //Append the single message to the chat log
   $('#chatlog').append($messageDiv);
+  setTimeout(function() {
+    $('#chatlog')
+      .stop()
+      .animate({ scrollTop: $('#chatlog')[0].scrollHeight }, 500);
+  }, 75);
 });
 
 //Function called when post message button is clicked.
