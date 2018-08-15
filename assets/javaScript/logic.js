@@ -64,6 +64,7 @@ var funcs = {
     var command = _.pullAt(msgArray, [0])[0];
     var searchTerm = _.map(msgArray).join(' ');
     var gifURL = `https://api.giphy.com/v1/gifs/random?tag=${searchTerm}&api_key=AsxtYL8Ch0dzfD1ekjuC36EWxoUEwsw9&limit=1`;
+    var translateURL = `https://api.mymemory.translated.net/get?q=${searchTerm}&langpair=en|it`
 
     //if first word starts with prefix, handle the command.
     //if first word doesn't start with prefix, push the message.
@@ -77,7 +78,14 @@ var funcs = {
           var gif = res.data.images.fixed_width.url;
           funcs.addMessage(`<img src=${gif}>`);
         });
-      } else {
+      }else if (command === '!italian') {
+        $.ajax({
+          url: translateURL
+        }).then(function (res){
+          funcs.addMessage(res.responseData.translatedText);
+        })
+      } 
+      else {
         funcs.addMessage('Command not found! Use !help for command help.');
       }
     } else {
