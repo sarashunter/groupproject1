@@ -81,7 +81,7 @@ var funcs = {
     if (_.startsWith(command, prefix)) {
       switch (command) {
         case '!help':
-          funcs.addMessage(`<p>${helpGif}</p><p>${helpItalian}</p><p>${helpDuck}</p><p>{helpSwahili}</p><p>{helpJapanese}</p>`);
+          funcs.addMessage(`<p>${helpGif}</p><p>${helpDuck}</p><p>${helpItalian}</p><p>${helpJapanese}</p><p>${helpSwahili}</p>`);
           break;
 
         case '!gif':
