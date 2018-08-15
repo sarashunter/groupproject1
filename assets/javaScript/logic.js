@@ -69,6 +69,7 @@ var funcs = {
     var gifURL = `https://api.giphy.com/v1/gifs/random?tag=${searchTerm}&api_key=AsxtYL8Ch0dzfD1ekjuC36EWxoUEwsw9&limit=1`;
     var translateURL = `https://api.mymemory.translated.net/get?q=${searchTerm}&langpair=en|it`
 
+    //Strings broken into vars to help the !help command not look like poo.
     var helpGif = 'Use "!gif [search term]" to post a random gif with the specified tag.  Example: !gif happy';
     var helpItalian = 'Use "!italian [sentence]" to translate what you type into Italian. Example: !italian Where is the library?';
     var helpDuck = 'Use "!duck" for an increasing flock of duck emojis. Example: !duck';
@@ -80,7 +81,7 @@ var funcs = {
         case '!help':
           funcs.addMessage(`<p>${helpGif}</p><p>${helpItalian}</p><p>${helpDuck}</p>`);
           break;
-      
+
         case '!gif':
           $.ajax({
             url: gifURL
@@ -114,7 +115,7 @@ var funcs = {
           funcs.addMessage('Command not found! Use !help for command help.');
           break;
       }
-     } else { //if no command is found, display message as typed
+    } else { //if no command is found, display message as typed
       funcs.addMessage(messageString);
     }
 
