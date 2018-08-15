@@ -36,6 +36,9 @@ var currentUserFlag;
 var chatLoad = false;
 var scrollState = false;
 
+//Every chat needs incrementing duck emojis
+var duckCount = 1;
+
 var funcs = {
   getUserFlag: function () {
     // get the API result via jQuery.ajax
@@ -47,8 +50,8 @@ var funcs = {
       currentUserFlag = flag;
 
       database
-      .ref('usersOnline/' + currentUserKey + '/flag')
-      .set(res.flag);
+        .ref('usersOnline/' + currentUserKey + '/flag')
+        .set(res.flag);
     });
   },
   addMessage: function (messageString) {
@@ -66,29 +69,53 @@ var funcs = {
     var gifURL = `https://api.giphy.com/v1/gifs/random?tag=${searchTerm}&api_key=AsxtYL8Ch0dzfD1ekjuC36EWxoUEwsw9&limit=1`;
     var translateURL = `https://api.mymemory.translated.net/get?q=${searchTerm}&langpair=en|it`
 
+    //Strings broken into vars to help the !help command not look like poo.
+    var helpGif = 'Use "!gif [search term]" to post a random gif with the specified tag.  Example: !gif happy';
+    var helpItalian = 'Use "!italian [sentence]" to translate what you type into Italian. Example: !italian Where is the library?';
+    var helpDuck = 'Use "!duck" for an increasing flock of duck emojis. Example: !duck';
+
     //if first word starts with prefix, handle the command.
     //if first word doesn't start with prefix, push the message.
     if (_.startsWith(command, prefix)) {
-      if (command === '!help') {
-        funcs.addMessage('Use "!gif [search term]" to post a random gif with the specified tag.  Example: !gif happy');
-      } else if (command === '!gif') {
-        $.ajax({
-          url: gifURL
-        }).then(function (res) {
-          var gif = res.data.images.fixed_width.url;
-          funcs.addMessage(`<img src=${gif}>`);
-        });
-      }else if (command === '!italian') {
-        $.ajax({
-          url: translateURL
-        }).then(function (res){
-          funcs.addMessage(res.responseData.translatedText);
-        })
-      } 
-      else {
-        funcs.addMessage('Command not found! Use !help for command help.');
+      switch (command) {
+        case '!help':
+          funcs.addMessage(`<p>${helpGif}</p><p>${helpItalian}</p><p>${helpDuck}</p>`);
+          break;
+
+        case '!gif':
+          $.ajax({
+            url: gifURL
+          }).then(function (res) {
+            var gif = res.data.images.fixed_width.url;
+            funcs.addMessage(`<img src=${gif}>`);
+          });
+          break;
+
+        case '!italian':
+          $.ajax({
+            url: translateURL
+          }).then(function (res) {
+            funcs.addMessage(res.responseData.translatedText);
+          });
+          break;
+
+        case '!duck':
+          var duckArr = [];
+          for (var i = 0; i < duckCount; i++) {
+            duckArr.push(String.fromCodePoint(0x1F986));
+          }
+          funcs.addMessage(_.map(duckArr).join(' '));
+          duckCount += 1;
+          if (duckCount === 11) {
+            duckCount = 1;
+          }
+          break;
+
+        default:
+          funcs.addMessage('Command not found! Use !help for command help.');
+          break;
       }
-    } else {
+    } else { //if no command is found, display message as typed
       funcs.addMessage(messageString);
     }
 
@@ -118,7 +145,7 @@ var funcs = {
 
     console.log("displayUser flag " + flag);
 
-    userDiv.html("<img src="+flag+">" + " " + name);
+    userDiv.html("<img src=" + flag + ">" + " " + name);
     $("#activeUsers").append(userDiv);
   }
 };
@@ -133,7 +160,7 @@ connectedRef.on('value', function (snapshot) {
       flag: 'assets/images/unknown-flag.png', //placeholder for later features
       key: 'futureKey', //placeholder for key (This is important for removing offline users from users online)     
     });
-    
+
 
     // Store the "key" to the current user
     currentUserKey = connected.key;
