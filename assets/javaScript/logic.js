@@ -64,11 +64,13 @@ var funcs = {
     var command = _.pullAt(msgArray, [0])[0];
     var searchTerm = _.map(msgArray).join(' ');
     var gifURL = `https://api.giphy.com/v1/gifs/random?tag=${searchTerm}&api_key=AsxtYL8Ch0dzfD1ekjuC36EWxoUEwsw9&limit=1`;
-    var translateURL = `https://api.mymemory.translated.net/get?q=${searchTerm}&langpair=en|it`
+    var translateURL = `https://api.mymemory.translated.net/get?q=${searchTerm}&langpair=en|`
 
     //Strings broken into vars to help the !help command not look like poo.
     var helpGif = 'Use "!gif [search term]" to post a random gif with the specified tag.  Example: !gif happy';
-    var helpItalian = 'Use "!italian [sentence]" to translate what you type into Italian. Example: !italian Where is the library?';
+    var helpItalian = 'Use "!italian [sentence]" to translate what you type into Italian. Example: !italian Does it walk like a duck?';
+    var helpJapanese = 'Use "!japanese [sentence]" to translate what you type into Japanese. Example: !japanese Does it quack like a duck?';
+    var helpSwahili = 'Use "!swahili [sentence]" to translate what you type into Swahili. Example: !swahili What the duck?';
     var helpDuck = 'Use "!duck" for an increasing flock of duck emojis. Example: !duck';
 
     //if first word starts with prefix, handle the command.
@@ -76,7 +78,7 @@ var funcs = {
     if (_.startsWith(command, prefix)) {
       switch (command) {
         case '!help':
-          funcs.addMessage(`<p>${helpGif}</p><p>${helpItalian}</p><p>${helpDuck}</p>`);
+          funcs.addMessage(`<p>${helpGif}</p><p>${helpDuck}</p><p>${helpItalian}</p><p>${helpJapanese}</p><p>${helpSwahili}</p>`);
           break;
 
         case '!gif':
@@ -90,7 +92,23 @@ var funcs = {
 
         case '!italian':
           $.ajax({
-            url: translateURL
+            url: translateURL + "it"
+          }).then(function (res) {
+            funcs.addMessage(res.responseData.translatedText);
+          });
+          break;
+
+        case '!japanese':
+          $.ajax({
+            url: translateURL + "ja"
+          }).then(function (res) {
+            funcs.addMessage(res.responseData.translatedText);
+          });
+          break;
+
+        case '!swahili':
+          $.ajax({
+            url: translateURL + "sw"
           }).then(function (res) {
             funcs.addMessage(res.responseData.translatedText);
           });
