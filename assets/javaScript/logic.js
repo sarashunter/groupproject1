@@ -230,7 +230,7 @@ $('#chatlog').scroll(function () {
   var scrollHeight = $('#chatlog')[0].scrollHeight;
   var clientHeight = $('#chatlog')[0].clientHeight;
 
-  //when user scrolls, enter scroll state. When user scrolls back down, exit scroll state and continue auto-scrolling.
+  //when user scrolls, enter scroll state. When user scrolls back down to bottom, exit scroll state and continue auto-scrolling.
   if (!scrollState) {
     scrollState = true;
   } else if (scrollHeight - scrollTop === clientHeight) {
