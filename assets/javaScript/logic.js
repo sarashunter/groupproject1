@@ -143,7 +143,7 @@ connectedRef.on('value', function (snapshot) {
     // User gets added to online users
     var connected = usersOnlineRef.push({
       name: 'unknown', //starts as unknown
-      flag: 'assets/images/unknownflag.jpg', //placeholder for later features
+      flag: 'assets/images/unknown-flag.png', //placeholder for later features
       key: 'futureKey', //placeholder for key (This is important for removing offline users from users online)     
     });
 
