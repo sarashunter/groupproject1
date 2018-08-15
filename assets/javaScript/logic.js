@@ -36,9 +36,6 @@ var currentUserFlag;
 var chatLoad = false;
 var scrollState = false;
 
-//Every chat needs incrementing duck emojis
-var duckCount = 1;
-
 var funcs = {
   getUserFlag: function () {
     // get the API result via jQuery.ajax
@@ -100,14 +97,15 @@ var funcs = {
           break;
 
         case '!duck':
+          var duckCount = parseInt(searchTerm);
           var duckArr = [];
-          for (var i = 0; i < duckCount; i++) {
-            duckArr.push(String.fromCodePoint(0x1F986));
-          }
-          funcs.addMessage(_.map(duckArr).join(' '));
-          duckCount += 1;
-          if (duckCount === 11) {
-            duckCount = 1;
+          if (!isNaN(duckCount)) {
+            for (var i = 0; i < duckCount; i++) {
+              duckArr.push(String.fromCodePoint(0x1F986));
+            }
+            funcs.addMessage(_.map(duckArr).join(' '));
+          } else {
+            funcs.addMessage('No ducks found! Make sure you are entering a number.');
           }
           break;
 
