@@ -36,6 +36,9 @@ var currentUserFlag;
 var chatLoad = false;
 var scrollState = false;
 
+//Every chat needs incrementing duck emojis
+var duckCount = 1;
+
 var funcs = {
   getUserFlag: function () {
     // get the API result via jQuery.ajax
@@ -47,8 +50,8 @@ var funcs = {
       currentUserFlag = flag;
 
       database
-      .ref('usersOnline/' + currentUserKey + '/flag')
-      .set(res.flag);
+        .ref('usersOnline/' + currentUserKey + '/flag')
+        .set(res.flag);
     });
   },
   addMessage: function (messageString) {
@@ -69,7 +72,7 @@ var funcs = {
     //if first word starts with prefix, handle the command.
     //if first word doesn't start with prefix, push the message.
     if (_.startsWith(command, prefix)) {
-      if (command === '!help') {
+      if (command === '!help') { //dispaly list of commands
         funcs.addMessage('Use "!gif [search term]" to post a random gif with the specified tag.  Example: !gif happy');
       } else if (command === '!gif') {
         $.ajax({
@@ -78,17 +81,27 @@ var funcs = {
           var gif = res.data.images.fixed_width.url;
           funcs.addMessage(`<img src=${gif}>`);
         });
-      }else if (command === '!italian') {
+      } else if (command === '!italian') { //translate sentence to Italian
         $.ajax({
           url: translateURL
-        }).then(function (res){
+        }).then(function (res) {
           funcs.addMessage(res.responseData.translatedText);
         })
-      } 
-      else {
+      } else if (command === '!duck') { //post ever incrementing string of duck emojis
+        var duckArr = [];
+        for (var i = 0; i < duckCount; i++) {
+          duckArr.push(String.fromCodePoint(0x1F986));
+        }
+        funcs.addMessage(_.map(duckArr).join(' '));
+        duckCount += 1;
+        if (duckCount === 11) {
+          duckCount = 1;
+        }
+      }
+      else { //command error message
         funcs.addMessage('Command not found! Use !help for command help.');
       }
-    } else {
+    } else { //if no command is found, display message as typed
       funcs.addMessage(messageString);
     }
 
@@ -118,7 +131,7 @@ var funcs = {
 
     console.log("displayUser flag " + flag);
 
-    userDiv.html("<img src="+flag+">" + " " + name);
+    userDiv.html("<img src=" + flag + ">" + " " + name);
     $("#activeUsers").append(userDiv);
   }
 };
@@ -133,7 +146,7 @@ connectedRef.on('value', function (snapshot) {
       flag: 'assets/images/unknown-flag.png', //placeholder for later features
       key: 'futureKey', //placeholder for key (This is important for removing offline users from users online)     
     });
-    
+
 
     // Store the "key" to the current user
     currentUserKey = connected.key;
