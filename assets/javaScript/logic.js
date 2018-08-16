@@ -121,10 +121,14 @@ var funcs = {
           var duckCount = parseInt(searchTerm);
           var duckArr = [];
           if (!isNaN(duckCount)) {
-            for (var i = 0; i < duckCount; i++) {
-              duckArr.push(String.fromCodePoint(0x1F986));
+            if (duckCount <= 50) {
+              for (var i = 0; i < duckCount; i++) {
+                duckArr.push(String.fromCodePoint(0x1F986));
+              }
+              funcs.addMessage(_.map(duckArr).join(' '));
+            } else {
+              funcs.addMessage("Come on, that's too many ducks.");
             }
-            funcs.addMessage(_.map(duckArr).join(' '));
           } else {
             funcs.addMessage('No ducks found! Make sure you are entering a number.');
           }

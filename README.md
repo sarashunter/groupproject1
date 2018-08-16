@@ -8,6 +8,7 @@ fläk is a collaborative messaging app for quick, pop-up chat sessions. It has b
 - No password or sign-in needed - just choose a user name.
 - In-chat commands for gifs - emojis are things your parents use.
 - Multiple themes to choose from - now you can match your cool desktop wallpaper.
+- It's free!
 
 
 
