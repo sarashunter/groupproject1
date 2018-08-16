@@ -46,6 +46,18 @@
                     <div class="card-header" id="userName">
                         Please create a user name
 
+
+                        <div class="btn-group dropup">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" id="dropupBtn" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Background
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item themeBtn" data-theme='stylemaster' href="#">Standard</a>
+                                <a class="dropdown-item themeBtn" data-theme='dark' href="#">Dark</a>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="card-body">
                         <input type="text" id="chooseUser">
@@ -68,26 +80,27 @@
                 <div class="card-body" style="overflow-y: scroll; height:400px;">
                     <!-- TODO: create scroll box for messages -->
                     <!-- chatRoom messages append here -->
-                    <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" id="chatlog">
+
+                    <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
 
                         <!-- Message boxes -->
-                        <!-- <div class="container" id="lighterContainer">
-                                    <img id="flag" src="./assets/images/flak-logo-birdonly.jpg" alt="Flag">
-                                    <p id="message" placeholder=""></p>
-                                    <span class="time-right">HH:mm</span>
-                            </div>
+                        <div class="container" id="lighterContainer">
+                            <img id="flag" src="./assets/images/flak-logo-birdonly.jpg" alt="Flag">
+                            <p id="message" placeholder=""></p>
+                            <span class="time-right">HH:mm</span>
+                        </div>
 
-                            <div class="container darker">
-                                    <img id="flagReply" src="./assets/images/flak-logo-birdonly.jpg" alt="Flag" class="right">
-                                    <p id="messageReply" placeholder=""></p>
-                                    <span class="time-left">HH:mm</span>
-                            </div> -->
+                        <div class="container darker">
+                            <img id="flagReply" src="./assets/images/flak-logo-birdonly.jpg" alt="Flag" class="right">
+                            <p id="messageReply" placeholder=""></p>
+                            <span class="time-left">HH:mm</span>
+                        </div>
 
 
                     </div>
-                    <div id="chatlog"></div>
                 </div>
             </div>
+
         </div>
 
         <hr>
@@ -99,9 +112,11 @@
                 <form class="form-inline">
                     <label class="sr-only" for="input-message">Chat Message</label>
                     <input type="text" class="form-control col-sm-11" id="input-message" placeholder="Type Your Message Here...">
-                    
+
                     <button id="postMessage" class="btn btn-secondary col-sm-1">Post</button>
+
          
+
                 </form>
                 <div class="btn-group dropup">
                     <button type="button" class="btn btn-secondary dropdown-toggle" id="dropupBtn" data-toggle="dropdown" aria-haspopup="true"
@@ -145,13 +160,14 @@
         <img class="card-img-top" src="./assets/images/flak-logo-birdonly.jpg" alt="Logo image">
         <div class="card-body">
             <div id="activeUsers">
+
                 <div class="rounded" id="userBox">Online Users</div>
+
             </div>
         </div>
     </div>
 
     <!-- lodash  -->
-    <!-- TODO: Pull only used methods from lodash CDN -->
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
 
     <!-- firebase J.S. link -->
@@ -167,6 +183,9 @@
 
     <!-- jQuery link -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <!-- Moment.js J>S link -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
     <!-- App J.S. link -->
     <script src="assets/javaScript/logic.js"></script>

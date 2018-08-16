@@ -36,9 +36,6 @@ var currentUserFlag;
 var chatLoad = false;
 var scrollState = false;
 
-//Every chat needs incrementing duck emojis
-var duckCount = 1;
-
 var funcs = {
   getUserFlag: function () {
     // get the API result via jQuery.ajax
@@ -55,10 +52,13 @@ var funcs = {
     });
   },
   addMessage: function (messageString) {
+
+    var date = moment().format("MMM-Do-YYYY, HH:mm");
+
     mainChatRef.push({
       sender: currentUserName,
       message: messageString,
-      time: 'now'
+      time: date
     });
   },
   msgHandler: function (messageString) {
@@ -67,11 +67,13 @@ var funcs = {
     var command = _.pullAt(msgArray, [0])[0];
     var searchTerm = _.map(msgArray).join(' ');
     var gifURL = `https://api.giphy.com/v1/gifs/random?tag=${searchTerm}&api_key=AsxtYL8Ch0dzfD1ekjuC36EWxoUEwsw9&limit=1`;
-    var translateURL = `https://api.mymemory.translated.net/get?q=${searchTerm}&langpair=en|it`
+    var translateURL = `https://api.mymemory.translated.net/get?q=${searchTerm}&langpair=en|`
 
     //Strings broken into vars to help the !help command not look like poo.
     var helpGif = 'Use "!gif [search term]" to post a random gif with the specified tag.  Example: !gif happy';
-    var helpItalian = 'Use "!italian [sentence]" to translate what you type into Italian. Example: !italian Where is the library?';
+    var helpItalian = 'Use "!italian [sentence]" to translate what you type into Italian. Example: !italian Does it walk like a duck?';
+    var helpJapanese = 'Use "!japanese [sentence]" to translate what you type into Japanese. Example: !japanese Does it quack like a duck?';
+    var helpSwahili = 'Use "!swahili [sentence]" to translate what you type into Swahili. Example: !swahili What the duck?';
     var helpDuck = 'Use "!duck" for an increasing flock of duck emojis. Example: !duck';
 
     //if first word starts with prefix, handle the command.
@@ -79,7 +81,7 @@ var funcs = {
     if (_.startsWith(command, prefix)) {
       switch (command) {
         case '!help':
-          funcs.addMessage(`<p>${helpGif}</p><p>${helpItalian}</p><p>${helpDuck}</p>`);
+          funcs.addMessage(`<p>${helpGif}</p><p>${helpDuck}</p><p>${helpItalian}</p><p>${helpJapanese}</p><p>${helpSwahili}</p>`);
           break;
 
         case '!gif':
@@ -93,21 +95,38 @@ var funcs = {
 
         case '!italian':
           $.ajax({
-            url: translateURL
+            url: translateURL + "it"
+          }).then(function (res) {
+            funcs.addMessage(res.responseData.translatedText);
+          });
+          break;
+
+        case '!japanese':
+          $.ajax({
+            url: translateURL + "ja"
+          }).then(function (res) {
+            funcs.addMessage(res.responseData.translatedText);
+          });
+          break;
+
+        case '!swahili':
+          $.ajax({
+            url: translateURL + "sw"
           }).then(function (res) {
             funcs.addMessage(res.responseData.translatedText);
           });
           break;
 
         case '!duck':
+          var duckCount = parseInt(searchTerm);
           var duckArr = [];
-          for (var i = 0; i < duckCount; i++) {
-            duckArr.push(String.fromCodePoint(0x1F986));
-          }
-          funcs.addMessage(_.map(duckArr).join(' '));
-          duckCount += 1;
-          if (duckCount === 11) {
-            duckCount = 1;
+          if (!isNaN(duckCount)) {
+            for (var i = 0; i < duckCount; i++) {
+              duckArr.push(String.fromCodePoint(0x1F986));
+            }
+            funcs.addMessage(_.map(duckArr).join(' '));
+          } else {
+            funcs.addMessage('No ducks found! Make sure you are entering a number.');
           }
           break;
 
@@ -181,7 +200,26 @@ connectedRef.on('value', function (snapshot) {
 mainChatRef.limitToLast(50).on('child_added', function (snapshot) {
   //create a div to show the message
   var $messageDiv = $('<div>').html(
-    `${snapshot.val().sender}: ${snapshot.val().message}`
+    `
+    <div class="messagePost">
+
+      <div class="row justify-content-between"> 
+        <div class="col align-self-start">
+          ${snapshot.val().sender} 
+        </div>
+        <div class="col-sm-3">
+          ${snapshot.val().time}
+        </div>
+      </div>
+
+      <hr>  
+
+      <div class="row container">
+        ${snapshot.val().message}
+      </div>
+
+    </div>
+    `
   );
 
   //Append the single message to the chat log
@@ -214,7 +252,7 @@ $('#chatlog').scroll(function () {
   var scrollHeight = $('#chatlog')[0].scrollHeight;
   var clientHeight = $('#chatlog')[0].clientHeight;
 
-  //when user scrolls, enter scroll state. When user scrolls back down, exit scroll state and continue auto-scrolling.
+  //when user scrolls, enter scroll state. When user scrolls back down to bottom, exit scroll state and continue auto-scrolling.
   if (!scrollState) {
     scrollState = true;
   } else if (scrollHeight - scrollTop === clientHeight) {
