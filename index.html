@@ -46,6 +46,7 @@
                     <div class="card-header" id="userName">
                         Please create a user name
 
+
                         <div class="btn-group dropup">
                             <button type="button" class="btn btn-secondary dropdown-toggle" id="dropupBtn" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
@@ -56,6 +57,7 @@
                                 <a class="dropdown-item themeBtn" data-theme='dark' href="#">Dark</a>
                             </div>
                         </div>
+
                     </div>
                     <div class="card-body">
                         <input type="text" id="chooseUser">
@@ -75,9 +77,10 @@
                     <h6 id="chatRoomName">MainChat</h6>
                 </div>
 
-                <div class="card-body" style="overflow-y: scroll; height:400px;" id="chatlog">
+                <div class="card-body" style="overflow-y: scroll; height:400px;">
                     <!-- TODO: create scroll box for messages -->
                     <!-- chatRoom messages append here -->
+
                     <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
 
                         <!-- Message boxes -->
@@ -103,20 +106,52 @@
         <hr>
 
         <!-- TODO: input extra buttons into chatBar (manual gif search, settings btn, users list, ect) -->
-        <div id="chatBar">
-            <div class="card">
-                <form class="form-inline">
 
-                    <label class="sr-only" for="input-message">Name</label>
+        <div id="chatBar" class="rounded">
+            <!-- <div class="card"> -->
+                <form class="form-inline">
+                    <label class="sr-only" for="input-message">Chat Message</label>
                     <input type="text" class="form-control col-sm-11" id="input-message" placeholder="Type Your Message Here...">
 
                     <button id="postMessage" class="btn btn-secondary col-sm-1">Post</button>
 
-
+         
 
                 </form>
+                <div class="btn-group dropup">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" id="dropupBtn" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Themes
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item themeBtn" data-theme='stylemaster' href="#">Lite</a>
+                        <a class="dropdown-item themeBtn" data-theme='dark' href="#">Dark</a>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- <div id="chatBar" class="rounded">
+
+            <form class="form-inline">
+                <label class="sr-only" for="input-message">Chat Message</label>
+                <input type="text" class="form-control" id="input-message" placeholder="Type Your Message Here...">
+
+                <button id="postMessage" class="btn btn-secondary">Post</button>
+            </form>
+            <div class="btn-group dropup">
+                <button type="button" class="btn btn-secondary dropdown-toggle" id="dropupBtn" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Themes
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item themeBtn" data-theme='stylemaster' href="#">Lite</a>
+                    <a class="dropdown-item themeBtn" data-theme='dark' href="#">Dark</a>
+                </div>
+            </div>
+
+
+
+        </div> -->
 
     </div>
 
@@ -125,7 +160,9 @@
         <img class="card-img-top" src="./assets/images/flak-logo-birdonly.jpg" alt="Logo image">
         <div class="card-body">
             <div id="activeUsers">
-                <h3 scope="col">Online Users</h3>
+
+                <div class="rounded" id="userBox">Online Users</div>
+
             </div>
         </div>
     </div>
