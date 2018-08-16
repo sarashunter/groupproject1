@@ -77,11 +77,11 @@ h6 {
     margin-top: 10px;
 }
 
-.messageBoard {
+/* .messageBoard {
     float: right;
     /* width: 75%; */
-    margin-top: -2em;
-}
+    /* margin-top: -2em;
+} */ 
 
 #chatlog >:nth-child(odd) {
     border: 1px solid rgb(127, 188, 192);
@@ -99,12 +99,12 @@ h6 {
     width: 100%;
     margin: 10px 0;
 }
-
+/* 
 .container::after {
     content: "";
     clear: both;
     display: table;
-}
+} */
 
 #chatBar {
     background-color: rgb(54, 132, 138);
@@ -128,12 +128,12 @@ h6 {
 
 
 
-/* Sidebar */
+/* Sidebar
 #sidebar {
     width: 35%;
     margin-left: 1.5em;
     margin-top: -2em;
-}
+} */
 
 .card-img-top {
     width: 200px;
