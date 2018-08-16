@@ -68,7 +68,7 @@ body {
 }
 
 #userBox {
-    background-color: #000000;
+    background-color: #221515;
     color:#ffffff;
     font-size: 24px;
     padding: 5px 0 5px 10px;
@@ -98,7 +98,7 @@ h6 {
 /* Darker container */
 #chatlog >:nth-child(even){
     border: 1px solid rgb(127, 188, 192);
-    background-color: rgb(156, 174, 184);
+    background-color: #c6e2e1;
     border-radius: 5px;
     width: 100%;
     margin: 10px 0;
@@ -122,8 +122,9 @@ h6 {
 } */
 
 #input-message {
-    border: 1px solid rgb(127, 188, 192);
-    border-radius: 5px;
+    /* border: 1px solid rgb(127, 188, 192); */
+    border-color: rgb(127, 188, 192);
+    /* border-radius: 5px; */
 }
 
 #postMessage {
