@@ -236,7 +236,7 @@ mainChatRef.limitToLast(50).on('child_added', function (snapshot) {
         $('#chatlog')
           .stop()
           .animate({ scrollTop: $('#chatlog')[0].scrollHeight }, 200);
-      }, 200);
+      }, 300);
       chatLoad = true;
     } else {
       setTimeout(() => {
@@ -294,7 +294,10 @@ $('#userChoice').on('click', function (event) {
     //Remove username input box after username is chosen
 
     // TODO: change display state of #userCreate to hidden and messages to inline-block
-    $('#enterUser').empty();
+    $('#userCreate').css('display', 'none');
+
+    $('#messageBlock').css('visibility', 'visible');
+    // $('#chatBar').css('visibility', 'visible');
 
     //Probably want to add our chat box at this point rather than from the start.
   }

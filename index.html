@@ -68,50 +68,53 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                
                     <!-- THis Div starts in a hidden display state. After user/userName is made, display state changes to inline-block -->
+                <div id="messageBlock">
                     <div id="messages">
                         <div class="card">
-
+                    
                             <div class="card-header" id="chatHeader">
                                 <!-- TODO: Make chatroom name change, using place holder until we add multi rooms -->
                                 <h6 id="chatRoomName">MainChat</h6>
                             </div>
-
+                    
                             <div class="card-body" style="overflow-y: scroll; height:400px;" id="chatlog">
                                 <!-- TODO: create scroll box for messages -->
                                 <!-- chatRoom messages append here -->
                                 <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
-
+                    
                                     <!-- Message boxes
-                            <div class="container" id="lighterContainer">
-                                <img id="flag" src="./assets/images/flak-logo-birdonly.jpg" alt="Flag">
-                                <p id="message" placeholder=""></p>
-                                <span class="time-right">HH:mm</span>
-                            </div>
-
-                            <div class="container darker">
-                                <img id="flagReply" src="./assets/images/flak-logo-birdonly.jpg" alt="Flag" class="right">
-                                <p id="messageReply" placeholder=""></p>
-                                <span class="time-left">HH:mm</span>
-                            </div> -->
-
-
+                                                <div class="container" id="lighterContainer">
+                                                    <img id="flag" src="./assets/images/flak-logo-birdonly.jpg" alt="Flag">
+                                                    <p id="message" placeholder=""></p>
+                                                    <span class="time-right">HH:mm</span>
+                                                </div>
+                    
+                                                <div class="container darker">
+                                                    <img id="flagReply" src="./assets/images/flak-logo-birdonly.jpg" alt="Flag" class="right">
+                                                    <p id="messageReply" placeholder=""></p>
+                                                    <span class="time-left">HH:mm</span>
+                                                </div> -->
+                    
+                    
                                 </div>
                                 <div id="chatlog"></div>
                             </div>
                         </div>
                     </div>
-
+                    
                     <hr>
-
+                    
                     <!-- TODO: input extra buttons into chatBar (manual gif search, settings btn, users list, ect) -->
                     <div id="chatBar" class="rounded">
                         <!-- <div class="card"> -->
                         <form class="form-inline">
-
+                    
                             <label class="sr-only" for="input-message">Chat Message</label>
                             <input type="text" class="form-control col-sm-11" id="input-message" placeholder="Type Your Message Here...">
-
+                    
                             <button id="postMessage" class="btn btn-secondary col-sm-1">Post</button>
                         </form>
                         <div class="btn-group dropup">
@@ -125,13 +128,8 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
-
             </div>
-
         </div>
 
         <!-- lodash  -->
