@@ -46,17 +46,7 @@
                     <div class="card-header" id="userName">
                         Please create a user name
 
-                        <div class="btn-group dropup">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" id="dropupBtn" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                Background
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item themeBtn" data-theme='stylemaster' href="#">Standard</a>
-                                <a class="dropdown-item themeBtn" data-theme='dark' href="#">Dark</a>
-                            </div>
-                        </div>
-                    </div>
+                       
                     <div class="card-body">
                         <input type="text" id="chooseUser">
                         <button id="userChoice" class="btn btn-info">Submit</button>
@@ -103,18 +93,29 @@
         <hr>
 
         <!-- TODO: input extra buttons into chatBar (manual gif search, settings btn, users list, ect) -->
-        <div id="chatBar">
-            <div class="card">
+        <div id="chatBar" class="rounded">
+            <!-- <div class="card"> -->
                 <form class="form-inline">
 
-                    <label class="sr-only" for="input-message">Name</label>
+                    <label class="sr-only" for="input-message">Chat Message</label>
                     <input type="text" class="form-control col-sm-11" id="input-message" placeholder="Type Your Message Here...">
 
                     <button id="postMessage" class="btn btn-secondary col-sm-1">Post</button>
-
-
-
                 </form>
+                    <div class="btn-group dropup">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" id="dropupBtn" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Theme
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item themeBtn" data-theme='stylemaster' href="#">Standard</a>
+                            <a class="dropdown-item themeBtn" data-theme='dark' href="#">Dark</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                
             </div>
         </div>
 
