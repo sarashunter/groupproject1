@@ -55,10 +55,13 @@ var funcs = {
     });
   },
   addMessage: function (messageString) {
+
+    var date = moment().format("MMM-Do-YYYY, HH:mm");
+
     mainChatRef.push({
       sender: currentUserName,
       message: messageString,
-      time: 'now'
+      time: date
     });
   },
   msgHandler: function (messageString) {
@@ -181,7 +184,26 @@ connectedRef.on('value', function (snapshot) {
 mainChatRef.limitToLast(50).on('child_added', function (snapshot) {
   //create a div to show the message
   var $messageDiv = $('<div>').html(
-    `${snapshot.val().sender}: ${snapshot.val().message}`
+    `
+    <div class="messagePost">
+
+      <div class="row justify-content-between"> 
+        <div class="col align-self-start">
+          ${snapshot.val().sender} 
+        </div>
+        <div class="col-sm-3">
+          ${snapshot.val().time}
+        </div>
+      </div>
+
+      <hr>  
+
+      <div class="row container">
+        ${snapshot.val().message}
+      </div>
+
+    </div>
+    `
   );
 
   //Append the single message to the chat log

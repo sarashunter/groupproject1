@@ -1,27 +1,22 @@
-/* width */
+/* scroll bar css */
+/* ---------------------------------- */
 
 ::-webkit-scrollbar {
     width: 10px;
 }
 
-/* Track */
-
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
-
-/* Handle */
 
 ::-webkit-scrollbar-thumb {
     background: #888;
 }
 
-/* Handle on hover */
-
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
-
+/* ---------------------------------- */
 body { 
     background-color: rgb(208, 228, 227);  
 }
@@ -82,12 +77,10 @@ h6 {
 
 .messageBoard {
     float: right;
-    width: 75%;
+    /* width: 75%; */
     margin-top: -2em;
 }
 
-
-/* Chat boxes */
 #lighterContainer{
     border: 1px solid rgb(127, 188, 192);
     background-color: #e9eff0;
