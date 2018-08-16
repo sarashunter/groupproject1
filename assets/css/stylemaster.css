@@ -23,7 +23,8 @@
 }
 
 body { 
-    background-color: rgb(208, 228, 227);  
+    background-color: rgb(208, 228, 227);
+    font-family: Arial, Helvetica, sans-serif;  
 }
 
 .jumbotron {
@@ -42,14 +43,12 @@ body {
 
 #userName {
     background-color: rgb(54, 132, 138);
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     color: white;
 }
 
 #dropupBtn {
     color: black;
-
 }
 
 #chooseUser {
@@ -68,13 +67,14 @@ body {
     background-color: rgb(54, 132, 138);
 }
 
-h3 {
+#userBox {
     background-color: #000000;
     color:#ffffff;
+    font-size: 24px;
+    padding: 5px 0 5px 10px;
 }
 
 h6 {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     color: white;
     margin-top: 10px;
@@ -88,7 +88,7 @@ h6 {
 
 
 /* Chat boxes */
-#lighterContainer{
+#chatlog >:nth-child(odd) {
     border: 1px solid rgb(127, 188, 192);
     background-color: #e9eff0;
     border-radius: 5px;
@@ -97,12 +97,12 @@ h6 {
 }
 
 /* Darker container */
-.darker {
+#chatlog >:nth-child(even){
     border: 1px solid rgb(127, 188, 192);
     background-color: rgb(156, 174, 184);
     border-radius: 5px;
-    float: right;
     width: 100%;
+    margin: 10px 0;
 }
 
 .container::after {
@@ -111,32 +111,20 @@ h6 {
     display: table;
 }
 
-/* Images for flag avatars */
-#flag {
-    float: left;
-    max-width: 60px;
-    width: 100%;
-    margin-left: 10px;
-    border-radius: 50%;
-}
 
-#flagReply {
-    float: left;
-    max-width: 60px;
-    width: 100%;
-    margin-left: 10px;
-    border-radius: 50%;
-}
-
-.form-inline {
-    width: 100%;
-    padding: 2%;
+#chatBar {
     background-color: rgb(54, 132, 138);
+    padding: 20px;
 }
+
+/* .form-inline {
+    width: 100%;
+} */
 
 #input-message {
     border: 1px solid rgb(127, 188, 192);
     border-radius: 5px;
+    
 }
 
 #postMessage {
