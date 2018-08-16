@@ -80,11 +80,11 @@ h6 {
     margin-top: 10px;
 }
 
-.messageBoard {
+/* .messageBoard {
     float: right;
     width: 75%;
     margin-top: -2em;
-}
+} */
 
 
 /* Chat boxes */
@@ -104,12 +104,12 @@ h6 {
     float: right;
     width: 100%;
 }
-
+/* 
 .container::after {
     content: "";
     clear: both;
     display: table;
-}
+} */
 
 /* Images for flag avatars */
 #flag {
@@ -145,12 +145,12 @@ h6 {
 
 
 
-/* Sidebar */
+/* Sidebar
 #sidebar {
     width: 35%;
     margin-left: 1.5em;
     margin-top: -2em;
-}
+} */
 
 .card-img-top {
     width: 200px;
