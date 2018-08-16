@@ -34,14 +34,16 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <!-- Sidebar for Active Online Users -->
-            <div class="card col-xs-12 col-md-4" id="sidebar" style="width: 18rem;">
-                <img class="card-img-top" src="./assets/images/flak-logo-birdonly.jpg" alt="Logo image">
-                <div class="card-body">
-                    <div id="activeUsers">
-                        <h3 scope="col">Online Users</h3>
+            <div class="col-xs-12 col-md-4" id="sidebar" style="width: 18rem;">
+                <div class="card">
+                    <img class="card-img-top" src="./assets/images/flak-logo-birdonly.jpg" alt="Logo image">
+                    <div class="card-body">
+                        <div id="activeUsers">
+                            <h3 scope="col">Online Users</h3>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -65,22 +67,22 @@
 
                             </div>
                         </div>
-</div>
-                        <!-- THis Div starts in a hidden display state. After user/userName is made, display state changes to inline-block -->
-                        <div id="messages">
-                            <div class="card">
+                    </div>
+                    <!-- THis Div starts in a hidden display state. After user/userName is made, display state changes to inline-block -->
+                    <div id="messages">
+                        <div class="card">
 
-                                <div class="card-header" id="chatHeader">
-                                    <!-- TODO: Make chatroom name change, using place holder until we add multi rooms -->
-                                    <h6 id="chatRoomName">MainChat</h6>
-                                </div>
+                            <div class="card-header" id="chatHeader">
+                                <!-- TODO: Make chatroom name change, using place holder until we add multi rooms -->
+                                <h6 id="chatRoomName">MainChat</h6>
+                            </div>
 
-                                <div class="card-body" style="overflow-y: scroll; height:400px;" id="chatlog">
-                                    <!-- TODO: create scroll box for messages -->
-                                    <!-- chatRoom messages append here -->
-                                    <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+                            <div class="card-body" style="overflow-y: scroll; height:400px;" id="chatlog">
+                                <!-- TODO: create scroll box for messages -->
+                                <!-- chatRoom messages append here -->
+                                <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
 
-                                        <!-- Message boxes
+                                    <!-- Message boxes
                             <div class="container" id="lighterContainer">
                                 <img id="flag" src="./assets/images/flak-logo-birdonly.jpg" alt="Flag">
                                 <p id="message" placeholder=""></p>
@@ -94,67 +96,67 @@
                             </div> -->
 
 
-                                    </div>
-                                    <div id="chatlog"></div>
                                 </div>
+                                <div id="chatlog"></div>
                             </div>
                         </div>
-
-                        <hr>
-
-                        <!-- TODO: input extra buttons into chatBar (manual gif search, settings btn, users list, ect) -->
-                        <div id="chatBar" class="rounded">
-                            <!-- <div class="card"> -->
-                            <form class="form-inline">
-
-                                <label class="sr-only" for="input-message">Chat Message</label>
-                                <input type="text" class="form-control col-sm-11" id="input-message" placeholder="Type Your Message Here...">
-
-                                <button id="postMessage" class="btn btn-secondary col-sm-1">Post</button>
-                            </form>
-                            <div class="btn-group dropup">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" id="dropupBtn" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    Theme
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item themeBtn" data-theme='stylemaster' href="#">Standard</a>
-                                    <a class="dropdown-item themeBtn" data-theme='dark' href="#">Dark</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-
                     </div>
+
+                    <hr>
+
+                    <!-- TODO: input extra buttons into chatBar (manual gif search, settings btn, users list, ect) -->
+                    <div id="chatBar" class="rounded">
+                        <!-- <div class="card"> -->
+                        <form class="form-inline">
+
+                            <label class="sr-only" for="input-message">Chat Message</label>
+                            <input type="text" class="form-control col-sm-11" id="input-message" placeholder="Type Your Message Here...">
+
+                            <button id="postMessage" class="btn btn-secondary col-sm-1">Post</button>
+                        </form>
+                        <div class="btn-group dropup">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" id="dropupBtn" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Theme
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item themeBtn" data-theme='stylemaster' href="#">Standard</a>
+                                <a class="dropdown-item themeBtn" data-theme='dark' href="#">Dark</a>
+                            </div>
+                        </div>
+                    </div>
+
+
 
                 </div>
 
             </div>
 
-            <!-- lodash  -->
-            <!-- TODO: Pull only used methods from lodash CDN -->
-            <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+        </div>
 
-            <!-- firebase J.S. link -->
-            <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+        <!-- lodash  -->
+        <!-- TODO: Pull only used methods from lodash CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
 
-            <!-- BootStrap jQuery link -->
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-                crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-                crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-                crossorigin="anonymous"></script>
+        <!-- firebase J.S. link -->
+        <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
 
-            <!-- jQuery link -->
-            <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <!-- BootStrap jQuery link -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
 
-            <!-- Moment.js J>S link -->
-            <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+        <!-- jQuery link -->
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
-            <!-- App J.S. link -->
-            <script src="assets/javaScript/logic.js"></script>
+        <!-- Moment.js J>S link -->
+        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+        <!-- App J.S. link -->
+        <script src="assets/javaScript/logic.js"></script>
 
 </body>
 
