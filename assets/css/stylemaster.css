@@ -31,6 +31,11 @@ body {
     margin-top: auto;    
 }
 
+#themeDrop {
+    position: relative;
+    float: right;
+}
+
 /* #styleChangerBtn {
     margin-left: -24em;
     margin-top: auto;
