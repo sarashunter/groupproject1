@@ -305,6 +305,7 @@ $('#userChoice').on('click', function (event) {
   funcs.setUser();
 });
 
+//allows user to hit enter for both user name choice and messaging. necessary due to use of aesthetically pleasing input groups.
 $('.messageBoard').on('keypress', function(event) {
   if (event.key === 'Enter') {
     if (!userChosen) {
