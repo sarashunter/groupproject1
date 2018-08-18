@@ -25,6 +25,10 @@ body {
   background-color: #444;
 }
 
+.card{
+    background-color: #444;
+}
+
 #activeUsers {
   color: white;
 }
@@ -47,3 +51,10 @@ body {
     width: 100%;
 }
 
+#activeUsers{
+    background-color: #303030;
+}
+
+h3{
+    color:#ffffff;
+}
