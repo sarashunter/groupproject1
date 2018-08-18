@@ -185,7 +185,7 @@ var funcs = {
       //Remove username input box after username is chosen
       $('#userCreate').css('display', 'none');
 
-      $('#messageBlock').css('visibility', 'visible');
+      $('#messageBlock').css('filter', 'blur(0px)');
     }
 
     funcs.getUserFlag();
@@ -228,8 +228,8 @@ mainChatRef.limitToLast(50).on('child_added', function (snapshot) {
     `
     <div class="messagePost">
       
-      <div class="row justify-content-between align-items-center messageHeader"> 
-        <div class="col align-self-start senderName">
+      <div class="row align-items-center messageHeader"> 
+        <div class="col align-self-start senderName mr-auto">
           <b>${snapshot.val().sender}</b> 
         </div>
         <div class="col-sm-3 timeStamp">

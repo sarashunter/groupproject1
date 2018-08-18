@@ -16,11 +16,6 @@ body {
     margin-top: auto;    
 }
 
-/* #styleChangerBtn {
-    margin-left: -24em;
-    margin-top: auto;
-} */
-
 #sidebar .card .card-body, #messages .card .card-body {
   background-color: #444;
 }
@@ -40,8 +35,18 @@ body {
     border:none;
 }
 
+
 .senderName {
     color: #555555;
+}
+
+
+
+.userNameForm{
+    padding: 20px;
+    background-color: #000000c5;
+    border-radius: 5px;
+    border: 1px solid rgb(127, 188, 192);
 }
 
 
