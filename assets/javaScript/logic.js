@@ -257,7 +257,7 @@ mainChatRef.limitToLast(50).on('child_added', function (snapshot) {
         $('#chatlog')
           .stop()
           .animate({ scrollTop: $('#chatlog')[0].scrollHeight }, 200);
-      }, 300);
+      }, 500);
       chatLoad = true;
     } else {
       setTimeout(() => {
