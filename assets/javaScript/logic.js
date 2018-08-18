@@ -32,9 +32,10 @@ var currentUserName;
 //Will display country flag.
 var currentUserFlag;
 
-//State flags for waiting for chat to load, auto-scrolling when scrolled to bottom, and stopping auto-scroll when manually scrolled up.
+//State flags for waiting for chat to load, auto-scrolling when scrolled to bottom, stopping auto-scroll when manually scrolled up, and which input box is affect by enter.
 var chatLoad = false;
 var scrollState = false;
+var userChosen = false;
 
 var funcs = {
   getUserFlag: function () {
@@ -170,6 +171,26 @@ var funcs = {
 
     userDiv.html("<img src=" + flag + ">" + " " + name);
     $("#activeUsers").append(userDiv);
+  },
+  setUser: function() {
+    //Store the value of the username chosen by user.  Probably want to validate this against other users.
+    currentUserName = $('#chooseUser').val();
+
+    if (currentUserName) {
+      //Set the name of the current user in user object to user's input.
+      database
+        .ref('usersOnline/' + currentUserKey + '/name')
+        .set(currentUserName);
+
+      //Remove username input box after username is chosen
+      $('#userCreate').css('display', 'none');
+
+      $('#messageBlock').css('visibility', 'visible');
+    }
+
+    funcs.getUserFlag();
+
+    userChosen = true;
   }
 };
 
@@ -236,7 +257,7 @@ mainChatRef.limitToLast(50).on('child_added', function (snapshot) {
         $('#chatlog')
           .stop()
           .animate({ scrollTop: $('#chatlog')[0].scrollHeight }, 200);
-      }, 300);
+      }, 500);
       chatLoad = true;
     } else {
       setTimeout(() => {
@@ -281,29 +302,24 @@ $('#postMessage').on('click', function (event) {
 //function to choose your username
 $('#userChoice').on('click', function (event) {
   event.preventDefault();
+  funcs.setUser();
+});
 
-  //Store the value of the username chosen by user.  Probably want to validate this against other users.
-  currentUserName = $('#chooseUser').val();
+//allows user to hit enter for both user name choice and messaging. necessary due to use of aesthetically pleasing input groups.
+$('.messageBoard').on('keypress', function(event) {
+  if (event.key === 'Enter') {
+    if (!userChosen) {
+      funcs.setUser();
+    } else {
+      if ($('#input-message').val()) {
+        //Calls function that creates the message
+        funcs.msgHandler($('#input-message').val());
 
-  if (currentUserName) {
-    //Set the name of the current user in user object to user's input.
-    database
-      .ref('usersOnline/' + currentUserKey + '/name')
-      .set(currentUserName);
-
-    //Remove username input box after username is chosen
-
-    // TODO: change display state of #userCreate to hidden and messages to inline-block
-    $('#userCreate').css('display', 'none');
-
-    $('#messageBlock').css('visibility', 'visible');
-    // $('#chatBar').css('visibility', 'visible');
-
-    //Probably want to add our chat box at this point rather than from the start.
+        //Clears input field for next message.
+        $('#input-message').val('');
+      }
+    }
   }
-
-  funcs.getUserFlag();
-
 });
 
 //Detects when a new user comes online.
