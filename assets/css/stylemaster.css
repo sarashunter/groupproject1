@@ -137,7 +137,23 @@ h6 {
     background-color: rgb(127, 188, 192);
 }
 
+.messageText {
+    margin: 5px;
+    padding: 5px 10px;   
+}
 
+.messageHeader {
+    background-color: #acacac9d;
+    margin: 0px;
+    padding: 5px;
+    border-bottom: 1px solid rgb(127, 188, 192);
+    border-radius: 5px;
+}
+
+.timeStamp {
+    font-size: 12px;
+    color: #555555;
+}
 
 /* Sidebar
 #sidebar {

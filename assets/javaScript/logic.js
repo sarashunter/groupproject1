@@ -226,20 +226,18 @@ mainChatRef.limitToLast(50).on('child_added', function (snapshot) {
   //create a div to show the message
   var $messageDiv = $('<div>').html(
     `
-    <div class="messagePost container">
+    <div class="messagePost">
       
-      <div class="row justify-content-between"> 
-        <div class="col align-self-start">
-          ${snapshot.val().sender} 
+      <div class="row justify-content-between align-items-center messageHeader"> 
+        <div class="col align-self-start senderName">
+          <b>${snapshot.val().sender}</b> 
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3 timeStamp">
           ${snapshot.val().time}
         </div>
       </div>
 
-      <hr>  
-
-      <div class="row container">
+      <div class="row messageText">
         ${snapshot.val().message}
       </div>
 
