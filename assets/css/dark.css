@@ -3,6 +3,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+::-webkit-scrollbar-track {
+    background: rgb(211, 216, 216);
+}
+
 .jumbotron {
     background: url(../images/flak-logo-transparent.png) no-repeat;
     background-color: #444;
@@ -36,22 +40,26 @@ body {
     border:none;
 }
 
+.senderName {
+    color: #555555;
+}
+
 
 #activeUsers {
-  color: white;
+  color: rgb(211, 216, 216);
 }
 
 #chatlog >:nth-child(even){
-    color: white;
+    color: rgb(211, 216, 216);
     border: 1px solid rgb(127, 188, 192);
-    background-color: rgb(109, 145, 165);
+    background-color: rgb(67, 80, 80);
     border-radius: 5px;
     width: 100%;
     margin: 10px 0;
 }
 
 #chatlog >:nth-child(odd) {
-    color: white;
+    color: rgb(211, 216, 216);
     border: 1px solid rgb(127, 188, 192);
     background-color: #4f6e74;
     border-radius: 5px;
@@ -64,5 +72,5 @@ body {
 }
 
 h3{
-    color:#ffffff;
+    color:rgb(211, 216, 216);
 }
