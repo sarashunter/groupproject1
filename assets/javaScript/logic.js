@@ -75,7 +75,7 @@ var funcs = {
     var helpItalian = 'Use "!italian [sentence]" to translate what you type into Italian. Example: !italian Does it walk like a duck?';
     var helpJapanese = 'Use "!japanese [sentence]" to translate what you type into Japanese. Example: !japanese Does it quack like a duck?';
     var helpSwahili = 'Use "!swahili [sentence]" to translate what you type into Swahili. Example: !swahili What the duck?';
-    var helpDuck = 'Use "!duck" for an increasing flock of duck emojis. Example: !duck';
+    var helpDuck = 'Use "!duck" for a specified amount of duck emojis (up to 50). Example: !duck 25';
 
     //if first word starts with prefix, handle the command.
     //if first word doesn't start with prefix, push the message.
