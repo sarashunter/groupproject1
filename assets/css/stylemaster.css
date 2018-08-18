@@ -37,11 +37,6 @@ body {
     right: 3%;
 }
 
-/* #styleChangerBtn {
-    margin-left: -24em;
-    margin-top: auto;
-} */
-
 #userName {
     background-color: rgb(54, 132, 138);
     font-size: 30px;
@@ -73,25 +68,12 @@ body {
     background-color: rgb(54, 132, 138);
 }
 
-/* #userBox {
-    background-color: #000000;
-    color:#ffffff;
-    font-size: 24px;
-    padding: 5px 0 5px 10px;
-} */
-
 h6 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     color: white;
     margin-top: 10px;
 }
-
-/* .messageBoard {
-    float: right;
-    /* width: 75%; */
-    /* margin-top: -2em;
-} */ 
 
 #chatlog >:nth-child(odd) {
     border: 1px solid rgb(127, 188, 192);
@@ -109,23 +91,11 @@ h6 {
     width: 100%;
     margin: 10px 0;
 }
-/* 
-.container::after {
-    content: "";
-    clear: both;
-    display: table;
-} */
 
 #chatBar {
     background-color: rgb(54, 132, 138);
     padding: 20px;
 }
-
-/* .form-inline {
-    width: 100%;
-    padding: 2%;
-    background-color: rgb(54, 132, 138);
-} */
 
 #input-message,  {
     /* border: 1px solid rgb(127, 188, 192); */
@@ -155,52 +125,6 @@ h6 {
     color: #555555;
 }
 
-/* Sidebar
-#sidebar {
-    width: 35%;
-    margin-left: 1.5em;
-    margin-top: -2em;
-} */
-
 .card-img-top {
     width: 200px;
 }
-
-/* @media (max-width: 980px) {
-    .Jumbotron {
-      width: 100%;
-    }
-    .messageBoard {
-      width: 100%;
-      margin: 0 auto;
-    }
-    #sidebar {
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .Jumbotron {
-      width: 100%;
-    }
-    .messageBoard {
-      width: 100%;
-      margin: 0 auto;
-    }
-    #sidebar {
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .Jumbotron {
-      width: 100%;
-    }
-    .messageBoard {
-      width: 100%;
-      margin: 0 auto;
-    }
-    #sidebar {
-      width: 100%;
-    }
-  } */
