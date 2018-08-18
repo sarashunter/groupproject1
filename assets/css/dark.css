@@ -17,10 +17,6 @@ body {
     margin-top: auto;
 } */
 
-.card {
-  border: none;
-}
-
 #sidebar .card .card-body, #messages .card .card-body {
   background-color: #444;
 }
