@@ -26,6 +26,16 @@
     <div class="header">
         <div id="headerHero" class="jumbotron">
             <div class="container">
+                <div class="btn-group dropleft" id="themeDrop">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" id="dropupBtn" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Theme
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item themeBtn" data-theme='stylemaster' href="#">Standard</a>
+                        <a class="dropdown-item themeBtn" data-theme='dark' href="#">Dark</a>
+                    </div>
+                </div>
                 <!-- Button that allows user to change background -->
                 <!-- <button id="styleChangerBtn">Change Style</button>  -->
 
@@ -120,26 +130,15 @@
                             <button class="btn btn-outline-secondary" type="button" id="postMessage">Post</button>
                         </div>
                     </div>
-
-                    <div class="btn-group dropup">
-                        <button type="button" class="btn btn-secondary dropdown-toggle" id="dropupBtn" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            Theme
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item themeBtn" data-theme='stylemaster' href="#">Standard</a>
-                            <a class="dropdown-item themeBtn" data-theme='dark' href="#">Dark</a>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!-- Sidebar for Active Online Users -->
             <div class="col-xs-12 col-md-3" id="sidebar">
                 <div class="card">
-                    <img class="card-img-top" src="./assets/images/flak-logo-birdonly.jpg" alt="Logo image">
+                    <img class="card-img-top" src="./assets/images/flak-logo-birdonly-transparent.png" alt="Logo image">
                     <div class="card-body">
-                        <div id="activeUsers">
                             <h3 scope="col">Online Users</h3>
+                        <div id="activeUsers">
                         </div>
                     </div>
                 </div>

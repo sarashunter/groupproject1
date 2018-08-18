@@ -25,6 +25,22 @@ body {
   background-color: #444;
 }
 
+.card{
+    background-color: #444;
+}
+
+.form-control:active, .form-control:enabled, .form-control-focus, .form-control{
+    background-color: #444;
+    color: #6c757d;
+    border:none;
+    /* border: 1px solid rgb(127, 188, 192); */
+}
+
+#chooseUser{
+    border:none;
+}
+
+
 #activeUsers {
   color: white;
 }
@@ -47,3 +63,10 @@ body {
     width: 100%;
 }
 
+#activeUsers{
+    background-color: #303030;
+}
+
+h3{
+    color:#ffffff;
+}
