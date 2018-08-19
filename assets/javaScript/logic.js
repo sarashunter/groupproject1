@@ -170,7 +170,7 @@ var funcs = {
     console.log("displayUser flag " + flag);
 
     userDiv.html("<img src=" + flag + ">" + " " + name);
-    $("#activeUsers").append(userDiv);
+    $(".activeUsers").append(userDiv);
   },
   setUser: function() {
     //Store the value of the username chosen by user.  Probably want to validate this against other users.

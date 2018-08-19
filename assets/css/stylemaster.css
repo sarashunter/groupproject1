@@ -144,5 +144,58 @@ h6 {
 }
 
 .card-img-top {
-    width: 200px;
+    display: block;
+    max-width: 200px;
+    max-height: 200px;
+    width: 100%;
+    height: auto;
+    
+}
+
+#input-dropupBtn {
+    display: none;
+}
+
+#dropupUsers {
+    overflow-y: scroll;
+    max-height: 200px;
+}
+
+.dropdown-menu {
+    padding: 0px;
+}
+
+.dropupHeader {
+    text-align: center;
+    background-color: #b6b6b6;
+    border-radius: 3px;
+}
+
+.userContainer {
+    max-height:  500px;
+}
+
+#activeUsersSidebar {
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.contentContainer {
+    max-height: 700px;
+}
+
+#sidebar {
+    max-height: 580px;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile */
+   
+    #input-dropupBtn {
+        display: flex;
+    }
+
+    #sidebar {
+        display: none;
+    }
 }
