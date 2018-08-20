@@ -167,8 +167,6 @@ var funcs = {
     var userDiv = $("<div>");
     userDiv.attr("data-key", key);
 
-    console.log("displayUser flag " + flag);
-
     userDiv.html("<img src=" + flag + ">" + " " + name);
     $(".activeUsers").append(userDiv);
   },

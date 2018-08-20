@@ -63,9 +63,7 @@ body {
 }
 
 #messageBlock {
-    /* visibility: hidden; */
-    filter: blur(5px);
-    
+    filter: blur(5px);   
 }
 
 #dropupBtn {
@@ -118,10 +116,8 @@ h6 {
     padding: 20px;
 }
 
-#input-message,  {
-    /* border: 1px solid rgb(127, 188, 192); */
+#input-message {
     border-color: rgb(127, 188, 192);
-    /* border-radius: 5px; */
 }
 
 
